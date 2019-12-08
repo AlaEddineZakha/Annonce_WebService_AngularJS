@@ -1,0 +1,87 @@
+
+<main role="main">
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row" >
+        <div class="col-md-6" *ngFor="let annonses of allAnnonce" >
+          <div class="card mb-4 shadow-sm">
+            <img src="/assets/images/annonce/Lion_d'Afrique.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p>{{annonses.titre}} - {{annonses.prix}}<i class="material-icons">
+                room
+              </i></p>
+              <p class="card-text">{{annonses.description  }}.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button class="btn btn-sm btn-outline-info" (click)="openLg(content)" >View</button>
+                  <button type="button" class="btn btn-sm btn-outline-warning"  routerLink="/annonce/{{annonses.id}}/edit" >Edit</button>
+                  <button type="button" class="btn btn-sm btn-outline-danger"  (click)="open(delete)" >Delete</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+          <ng-template  #delete let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+              <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p><strong>Are you sure you want to delete <span class="text-primary">"John Doe"</span> profile?</strong></p>
+              <p>All information associated to this user profile will be permanently deleted.
+                <span class="text-danger">This operation can not be undone.</span>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+              <button type="button" ngbAutofocus class="btn btn-danger" (click)="Delete(annonses.id) && modal.dismiss('Cross click')">Ok</button>
+            </div>
+          </ng-template>
+          <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Annonce</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="media border p-3">
+                <img src="/assets/images/annonce/img_avatar3.png" alt="{{annonses.user.username}}" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                <div class="media-body">
+                  <h4>{{annonses.user.username}} <small><i>Poster on {{annonses.date  | date:'medium'}}</i></small></h4>
+                  <p>{{annonses.titre}} </p>
+                  <p style="margin-left: 20px; margin-top: -5px;"> <!--<i style="font-size:24px" class="fa">&#xf153;</i>-->
+                    Prix : {{annonses.prix | currency:"DT " }}
+                    <i style="font-size:24px" class="fa">&#xf041;</i> {{annonses.emplacement}} <i style="font-size:24px" class="fa">&#xf02b;</i>
+                    {{annonses.categorie.nom}}.</p>
+                  <p> Description : </p><p style="margin-left: 20px; margin-top: -5px;">{{annonses.description}}.</p>
+                  <!--<div class="media p-3">
+                    <img src="/assets/images/annonce/img_avatar2.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
+                    <div class="media-body">
+                      <h4>Jane Doe <small><i>Posted on February 20 2016</i></small></h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                  </div>-->
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" (click)="modal.dismiss('Cross click')" routerLink="/annonce/{{annonses.id}}/contact">Contact</button>
+              <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+            </div>
+          </ng-template>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</main>
+

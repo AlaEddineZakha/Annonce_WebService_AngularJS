@@ -1,0 +1,36 @@
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>À propos de Nous</h2>
+      <a href="https://saycomlabs.com" target="_blank"><img class="mb-4"  src="/assets/images/logos/saycomlabs.png" alt="SaycomLab"></a>
+      <!--<div class="fakeimg">Fake Image</div>-->
+      <p>SAYCOM LAB est une agence de marketing B2B spécialisée dans l’Internet Marketing, la conception et la construction
+        de sites Web ainsi que l’assistance webmaster et le service d’hébergement.</p>
+      <h3>Catégories</h3>
+      <p></p>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item" *ngFor="let _categorie of categorie">
+          <a class="nav-link" href="#">{{_categorie.nom}}</a>
+        </li>
+
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8">
+      <app-allannonce></app-allannonce>
+      <!--<h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <br>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>-->
+    </div>
+  </div>
+</div>
+

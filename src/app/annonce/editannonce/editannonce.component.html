@@ -1,0 +1,81 @@
+<h1 align="center" style="margin-bottom: 50px; margin-top: 50px"> Edit Annonce </h1>
+<form name="form" (ngSubmit)="onSubmit()" #f="ngForm" >
+  <!--<form [formGroup]="AnnonceForme" (ngSubmit)="onSubmit()">-->
+  <div class="form-row">
+    <div class="form-group col-md-3" align="center">
+      <label for="inputEmail4">Titre</label>
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" [(ngModel)]="form.titre"  name="titre" required  [value]="_annonce.titre"  placeholder="Titre">
+
+      <!-- [(ngModel)]="form.titre" #titre="ngModel"
+      <div *ngIf="f.submitted && titre.invalid">
+        <div *ngIf="titre.errors.required">Name is required</div>
+      </div>-->
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3" align="center">
+      <label>Description</label>
+    </div>
+    <div class="form-group col-md-6">
+      <textarea class="form-control" rows="3" name="description" [(ngModel)]="form.description" value="{{_annonce.description}}"   required ></textarea>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3" align="center">
+      <label>Emplacement</label>
+    </div>
+    <div class="form-group col-md-6">
+      <input type="email" class="form-control" [(ngModel)]="form.emplacement" value="{{_annonce.emplacement}}"  name="emplacement" required placeholder="Emplacement">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3" align="center">
+      <label>Prix</label>
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" value="{{_annonce.prix}}"  name="prix" [(ngModel)]="form.prix" #prix="ngModel" required />
+
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3" align="center">
+      <label>Image</label>
+    </div>
+    <div class="form-group col-md-6">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3" align="center">
+      <label>Catégorie</label>
+    </div>
+    <div class="form-group col-md-6">
+      <select  class="custom-select" (change)="onChange($event.target.value)" name="categorie" [(ngModel)]="form.categorie" required>
+        <option *ngFor="let cat of categorie" value="{{cat.id}}">
+          {{cat.nom}}
+        </option>
+
+      </select>
+      <p> L'anncien Catégorie Selectionner {{_annonce.categorie.nom}} </p>
+      <p> Sélectionner Votre Nouvelle Catégorie</p>
+
+      <div class="invalid-feedback">Example invalid custom select feedback</div>
+    </div>
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2"></div>
+    <div class="form-group col-md-8">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Edit </button>
+    </div>
+    <div class="form-group col-md-2"></div>
+
+  </div>
+
+</form>

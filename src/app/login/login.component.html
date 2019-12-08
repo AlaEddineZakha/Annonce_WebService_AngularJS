@@ -1,0 +1,35 @@
+<div *ngIf="isLoggedIn; else loggedOut">
+ <app-home></app-home>
+</div>
+
+<ng-template #loggedOut>
+
+    <link rel="stylesheet" href="/assets/css/signin.css">
+<form class="form-signin" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate style=" margin-left: 490px; margin-right: 0px; ">
+  <img class="mb-4" src="/assets/images/logos/saycomlabs.png" alt="">
+  <h1 class="h3 mb-3 font-weight-normal" align="center">Please sign in</h1>
+  <label class="sr-only">Username</label>
+  <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+         required autofocus />
+  <div *ngIf="f.submitted && username.invalid">
+    <div *ngIf="username.errors.required">Username is required</div>
+  </div>
+  <label class="sr-only">Password</label>
+  <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+         required minlength="6" />
+  <div *ngIf="f.submitted && password.invalid">
+    <div *ngIf="password.errors.required">Password is required</div>
+    <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+  </div>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+      Login failed: {{errorMessage}}
+    </div>
+  <p class="mt-5 mb-3 text-muted">&copy; 2017-{{ site | date: "yyyy" }}  <a href="https://saycomlabs.com">SaycomLab</a></p>
+</form>
+</ng-template>

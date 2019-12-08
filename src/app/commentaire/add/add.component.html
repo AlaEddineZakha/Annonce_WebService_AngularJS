@@ -1,0 +1,12 @@
+<p [innerHTML]="_after_add_commentaire"></p>
+<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <div class="form-group">
+    <label>Comment:</label>
+    <textarea class="form-control" rows="5" name="prix" [(ngModel)]="form.contenu" #contenu="ngModel" required="true"></textarea>
+    <div *ngIf="f.submitted && contenu.invalid">
+      <div *ngIf="contenu.errors.required">Commentaire is required</div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Commenter</button>
+  </div>
+</form>
+

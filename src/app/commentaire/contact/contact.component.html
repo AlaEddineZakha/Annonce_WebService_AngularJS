@@ -1,0 +1,31 @@
+<main role="main">
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+
+
+              <div class="media border p-3">
+                <img src="/assets/images/annonce/img_avatar3.png" alt="{{_annonce.user.username}}" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                <div class="media-body">
+                  <h4>{{_annonce.user.username}} <small><i>Poster on {{_annonce.date  | date:'medium'}}</i></small></h4>
+                  <p>{{_annonce.titre}} </p>
+                  <p style="margin-left: 20px; margin-top: -5px;"> <!--<i style="font-size:24px" class="fa">&#xf153;</i>-->
+                    Prix : {{_annonce.prix | currency:"DT " }}
+                    <i style="font-size:24px" class="fa">&#xf041;</i> {{_annonce.emplacement}} <i style="font-size:24px" class="fa">&#xf02b;</i>
+                    {{_annonce.categorie.nom}}.</p>
+                  <p> Description : </p><p style="margin-left: 20px; margin-top: -5px;">{{_annonce.description}}.</p>
+                  <div class="media p-3" *ngFor="let commentaire of _commentaire">
+                    <img src="/assets/images/annonce/img_avatar2.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
+                    <div class="media-body">
+                      <h4>{{commentaire.user.username}} <small><i>Poster on {{commentaire.date | date: 'medium'}}</i></small></h4>
+                      <p> {{commentaire.contenu}}.</p>
+                    </div>
+                  </div>
+                  <app-add></app-add>
+                </div>
+              </div>
+            </div>
+
+    </div>
+</main>
+
