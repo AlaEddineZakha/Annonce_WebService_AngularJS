@@ -9,8 +9,10 @@ import { Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
   private roles: string[];
+  private signup: boolean;
   private authority: string;
   private date = new Date();
+  private href: string;
   constructor(private tokenStorage: TokenStorageService , private token: TokenStorageService , private router: Router) { }
 
   ngOnInit() {
@@ -28,15 +30,21 @@ export class AppComponent implements OnInit {
         return true;
       });
     }
+   this.href =  window.location.href;
   }
   signOut() {
     window.sessionStorage.clear();
   }
   logout() {
+    this.signOut();
     this.token.signOut();
     // @ts-ignore
     this.router.navigate(['/home']);
     // tslint:disable-next-line:comment-format
     window.location.replace('/home');
+  }
+  singup() {
+    this.signup = true;
+    window.location.replace('/signup');
   }
 }

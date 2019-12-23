@@ -27,6 +27,7 @@
     </label>
   </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  <button class="btn btn-sm btn-success btn-block" align="center" style="margin-top: 15px" (click)="signup()"> Register </button>
     <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
       Login failed: {{errorMessage}}
     </div>

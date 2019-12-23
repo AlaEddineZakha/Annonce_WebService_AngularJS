@@ -8,16 +8,15 @@ import { SignUpInfo } from '../auth/signup-info';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   form: any = {};
   signupInfo: SignUpInfo;
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
-
+  isLoggedIn = false;
   constructor(private authService: AuthService) { }
 
-  ngOnInit() { }
 
   onSubmit() {
     console.log(this.form);
